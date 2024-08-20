@@ -6,8 +6,6 @@ services:
     container_name: todo-app
     ports:
       - "3000:3000"
-    volumes:
-      - ./app:/app
     networks:
       - app-network
 
