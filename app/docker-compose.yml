@@ -2,7 +2,11 @@ version: '3'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        - TAG=${TAG}  # Se pasará una etiqueta dinámica al build
+    image: to-do-app:${TAG}
     ports:
       - "3000:3000"
 
