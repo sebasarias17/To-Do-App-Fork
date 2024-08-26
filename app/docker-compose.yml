@@ -6,7 +6,7 @@ services:
       context: .
       args:
         - TAG=${TAG}  # Se pasará una etiqueta dinámica al build
-    image: to-do-app:${TAG}
+    image: ${IMAGE_NAME}:${TAG}
     ports:
       - "3000:3000"
 
