@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         REPO_URL = 'https://github.com/sebasarias17/To-Do-App-Fork.git'
-        DOCKER_COMPOSE_PATH = './docker-compose.yml'
+        DOCKER_COMPOSE_PATH = './app/docker-compose.yml'
     }
 
     stages {
