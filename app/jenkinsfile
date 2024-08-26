@@ -27,9 +27,11 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    // Construir y etiquetar la imagen Docker directamente con el tag generado
+                    // Construir la imagen Docker y etiquetarla directamente con el tag generado
                     sh "docker-compose -f ${DOCKER_COMPOSE_PATH} build"
-                    sh "docker tag ${IMAGE_NAME}:${TAG} ${IMAGE_NAME}:${TAG}"
+
+                    // Etiquetar la imagen con el tag generado (usando la imagen creada con 'latest')
+                    sh "docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${TAG}"
                 }
             }
         }
@@ -37,7 +39,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Pushear la imagen al registro Docker con el nuevo tag
+                    // Pushear la imagen al registro Docker con el nuevo tag y 'latest'
+                    sh "docker push ${IMAGE_NAME}:latest"
                     sh "docker push ${IMAGE_NAME}:${TAG}"
                 }
             }
