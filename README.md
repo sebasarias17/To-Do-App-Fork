@@ -1,3 +1,3 @@
 # To-Do-App
 
-Todo app CD test
+Todo app with CI/CD en jenkins and docker
