@@ -1,3 +1,3 @@
 # To-Do-App
 
-Todo app with CI/CD en jenkins and dockerhub
+Todo app with CI/CD en jenkins and dockerhub by Sebastian Arias
