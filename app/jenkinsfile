@@ -42,7 +42,9 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'npm test'
+                    dir('app'){
+                        sh 'npm test'
+                    }
                 }
             }
         }
