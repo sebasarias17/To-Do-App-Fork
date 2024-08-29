@@ -8,7 +8,7 @@ services:
         - TAG=${TAG}  
     image: sebasarias17/to-do-app:latest
     ports:
-      - "3200:3200"
+      - "3000:3000"
 
   nginx:
     image: nginx:alpine

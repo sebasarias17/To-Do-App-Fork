@@ -18,15 +18,11 @@ pipeline {
         stage('Load Version') {
             steps {
                 script {
-                    if (fileExists(VERSION_FILE)) {
-                        env.VERSION = readFile(VERSION_FILE).trim()
-                        echo "Loaded version: ${env.VERSION}"
-                    } else {
+                        echo "Loaded version: ${VERSION}"
                         error "Version file not found! Please create a version.txt file with the desired version."
                     }
                 }
             }
-        }
 
         stage('Prepare Environment') {
             steps {
@@ -63,7 +59,7 @@ pipeline {
             steps {
                 script {
                     sh "docker-compose -f ${DOCKER_COMPOSE_PATH} build"
-                    sh "docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${env.VERSION}"
+                    sh "docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${VERSION}"
                 }
             }
         }
@@ -82,7 +78,7 @@ pipeline {
             steps {
                 script {
                     sh "docker push ${IMAGE_NAME}:latest"
-                    sh "docker push ${IMAGE_NAME}:${env.VERSION}"
+                    sh "docker push ${IMAGE_NAME}:${VERSION}"
                 }
             }
         }
