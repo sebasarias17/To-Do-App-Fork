@@ -31,7 +31,6 @@ pipeline {
         stage('Prepare Environment') {
             steps {
                 script {
-                    // Crear el directorio tmp y darle permisos
                     sh 'mkdir -p ./tmp'
                     sh 'chmod -R 777 ./tmp/'
                 }
@@ -64,7 +63,7 @@ pipeline {
             steps {
                 script {
                     sh "docker-compose -f ${DOCKER_COMPOSE_PATH} build"
-                    sh "docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${VERSION}"
+                    sh "docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${env.VERSION}"
                 }
             }
         }
@@ -83,7 +82,7 @@ pipeline {
             steps {
                 script {
                     sh "docker push ${IMAGE_NAME}:latest"
-                    sh "docker push ${IMAGE_NAME}:${VERSION}"
+                    sh "docker push ${IMAGE_NAME}:${env.VERSION}"
                 }
             }
         }
