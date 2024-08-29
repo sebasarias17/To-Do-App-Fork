@@ -18,11 +18,10 @@ pipeline {
         stage('Load Version') {
             steps {
                 script {
-                        echo "Loaded version: ${VERSION}"
-                        error "Version file not found! Please create a version.txt file with the desired version."
-                    }
+                    echo 'Loaded version: ${VERSION}'
                 }
             }
+        }
 
         stage('Prepare Environment') {
             steps {
