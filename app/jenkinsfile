@@ -28,13 +28,23 @@ pipeline {
             }
         }
 
+        stage('Prepare Environment') {
+            steps {
+                script {
+                    // Crear el directorio tmp y darle permisos
+                    sh 'mkdir -p ./tmp'
+                    sh 'chmod -R 777 ./tmp/'
+                }
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 script {
                     dir('app'){
-                        sh 'npm install'
+                        sh 'npm install jest'  // Instalación de jest
+                        sh 'npm install'       // Instalación de otras dependencias
                     }
-
                 }
             }
         }
@@ -42,6 +52,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
+                    echo 'Running tests...'
                     dir('app'){
                         sh 'npm test'
                     }

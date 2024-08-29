@@ -1,12 +1,11 @@
 const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs');
-const path = require('path');
-const location = process.env.SQLITE_DB_LOCATION || '/tmp/todos/todo.db';
+const location = process.env.SQLITE_DB_LOCATION || './tmp/todos/todo.db';
 
 let db, dbAll, dbRun;
 
 function init() {
-    const dirName = path.dirname(location);
+    const dirName = require('path').dirname(location);
     if (!fs.existsSync(dirName)) {
         fs.mkdirSync(dirName, { recursive: true });
     }
