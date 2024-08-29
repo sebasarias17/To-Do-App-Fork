@@ -5,7 +5,7 @@ pipeline {
         REPO_URL = 'https://github.com/sebasarias17/To-Do-App-Fork.git'
         DOCKER_COMPOSE_PATH = './app/docker-compose.yml'
         IMAGE_NAME = 'sebasarias17/to-do-app'
-        VERSION_FILE = 'version.txt'
+        VERSION = ''  // Inicializamos la variable VERSION
     }
 
     stages {
@@ -15,10 +15,13 @@ pipeline {
             }
         }
 
-        stage('Load Version') {
+        stage('Generate Version') {
             steps {
                 script {
-                    echo 'Loaded version: v1.1.3'
+                    // Generar una versión basada en la fecha y hora actual
+                    def date = new Date().format("yyyyMMdd-HHmmss", TimeZone.getTimeZone("UTC"))
+                    env.VERSION = "v${date}"
+                    echo "Generated version: ${env.VERSION}"
                 }
             }
         }
@@ -57,7 +60,7 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    sh "docker-compose -f ${DOCKER_COMPOSE_PATH} build"
+                    sh "docker-compose -f ${DOCKER_COMPOSE_PATH} build --build-arg TAG=${VERSION}"
                     sh "docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${VERSION}"
                 }
             }
