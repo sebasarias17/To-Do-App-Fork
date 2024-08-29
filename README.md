@@ -1,3 +1,3 @@
 # To-Do-App
 
-Todo app with CI/CD en jenkins and dockerhub by Sebastian Arias Endava Internship 2024-2
+Todo app with CI/CD en jenkins and docker hub by Sebastian Arias Endava Internship 2024-2
