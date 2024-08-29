@@ -18,7 +18,7 @@ pipeline {
         stage('Load Version') {
             steps {
                 script {
-                    echo 'Loaded version: ${VERSION}'
+                    echo 'Loaded version: v1.1.3'
                 }
             }
         }
