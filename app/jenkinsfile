@@ -11,19 +11,14 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: "${REPO_URL}"
+                git branch: '${branch}', url: "${REPO_URL}"
             }
         }
 
         stage('Load Version') {
             steps {
                 script {
-                    if (fileExists(VERSION_FILE)) {
-                        env.VERSION = readFile(VERSION_FILE).trim()
-                        echo "Loaded version: ${env.VERSION}"
-                    } else {
-                        error "Version file not found! Please create a version.txt file with the desired version."
-                    }
+                    echo 'Loaded version: ${VERSION}'
                 }
             }
         }
@@ -31,7 +26,6 @@ pipeline {
         stage('Prepare Environment') {
             steps {
                 script {
-                    // Crear el directorio tmp y darle permisos
                     sh 'mkdir -p ./tmp'
                     sh 'chmod -R 777 ./tmp/'
                 }
