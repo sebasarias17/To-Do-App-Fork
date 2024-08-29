@@ -15,7 +15,7 @@ body {
 }
 
 .item:hover {
-    box-shadow: 0 0 1em #85a3f7;
+    box-shadow: 0 0 1em #a0b9ff;
 }
 
 .item.completed {
