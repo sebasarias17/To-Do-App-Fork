@@ -1,5 +1,6 @@
 const db = require('../../src/persistence/sqlite');
 const fs = require('fs');
+const path = require('path');
 const location = process.env.SQLITE_DB_LOCATION || './tmp/todos/todo.db';
 
 const ITEM = {
