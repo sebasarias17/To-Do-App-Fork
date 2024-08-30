@@ -1,5 +1,5 @@
 body {
-    background-color: #ffb7b7;
+    background-color: #b7ffff;
     margin-top: 50px;
     font-family: 'Lato';
 }
@@ -15,7 +15,7 @@ body {
 }
 
 .item:hover {
-    box-shadow: 0 0 1em #a7f9c3;
+    box-shadow: 0 0 1em #f9a7a7;
 }
 
 .item.completed {
