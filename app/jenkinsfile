@@ -36,8 +36,11 @@ pipeline {
             steps {
                 script {
                     dir('app'){
-                        sh 'npm install jest'  // Instalación de jest
-                        sh 'npm install'       // Instalación de otras dependencias
+                        sh 'rm -f yarn.lock'
+                        
+                        sh 'npm install jest'
+                        
+                        sh 'npm install'
                     }
                 }
             }
